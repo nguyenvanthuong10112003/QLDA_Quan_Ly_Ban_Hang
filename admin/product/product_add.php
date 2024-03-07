@@ -159,7 +159,7 @@ if (isset($_SESSION[KeySession::sysrequest->value])) {
             })
             $('#input-img-select').change(() => {
                 console.log('ok');
-                var lists =new DataTransfer();
+                let lists =new DataTransfer();
                 Array.from(document.getElementById('box-images').files).forEach(item => {
                     lists.items.add(item)
                 });
@@ -195,6 +195,10 @@ if (isset($_SESSION[KeySession::sysrequest->value])) {
                             btnClose.innerHTML = '<i class="fa-solid fa-xmark text-white"></i>'
                             btnClose.onclick = () => {
                                 boxImage.remove();
+                                let lists = new DataTransfer();
+                                Array.from(document.getElementById('box-images').files).forEach(item => {
+                                    lists.items.add(item)
+                                });
                                 for (let i = 0; i < lists.files.length; i++) {
                                     if (lists.files[i].name === file.name) 
                                     {

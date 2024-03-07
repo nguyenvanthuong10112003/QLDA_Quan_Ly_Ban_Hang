@@ -17,7 +17,7 @@ function whenGet() {
     }
     if (!isset($_GET['username'])) 
     {
-        header('Location: user_list.php');
+        header('Location: personnel_list.php');
         exit(0);
     }
     ?>
@@ -54,7 +54,7 @@ function whenGet() {
                                 <span id="errorPassword" class="text-danger d-none">Mật khẩu không trùng khớp</span>
                             </div>
                             <input type="submit" name="btn-change-pw" class="btn btn-primary mt-2" value="Xác nhận">
-                            <a href="user_list.php" class="btn btn-secondary mt-2">Hủy bỏ</a>
+                            <a href="personnel_list.php" class="btn btn-secondary mt-2">Hủy bỏ</a>
                         </form>
                     </div>
                 </div>
@@ -112,7 +112,7 @@ function whenPost() {
                         null
                     )
                 );
-                header("Location: user_list.php");
+                header("Location: personnel_list.php");
             } else {
                 $_SESSION[KeySession::sysrequest->value] = json_encode(
                     new SysRequest(
@@ -131,7 +131,7 @@ function whenPost() {
                     null
                 )
             );
-            header('Location: user_list.php');
+            header('Location: personnel_list.php');
         }
         $context->__destruct();
     }

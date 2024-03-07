@@ -27,7 +27,7 @@ if (isset($_SESSION[KeySession::sysrequest->value])) {
                     <h4>Thêm nhân viên</h4>
                 </div>
                 <div class="card-body">
-                    <form action="user_add_action.php" id="form-register" onsubmit="validate();" method="POST" autocomplete="off">
+                    <form action="personnel_add_action.php" id="form-register" onsubmit="validate();" method="POST" autocomplete="off">
                         <?php 
                             if (isset($request) && $request->status === 0 && $request->message) 
                                 echo '<span class="fw-bolder text-danger">' . $request->message . "</span>";
@@ -92,7 +92,7 @@ if (isset($_SESSION[KeySession::sysrequest->value])) {
                                 value="<?= isset($entityRequest) ? $entityRequest->address : '' ?>">
                         </div>
                         <input type="submit" name="btn-add-user" class="btn btn-primary mt-2" value="Xác nhận">
-                        <a href="user_list.php" class="btn btn-secondary mt-2">Hủy bỏ</a>
+                        <a href="personnel_list.php" class="btn btn-secondary mt-2">Hủy bỏ</a>
                     </form>
                 </div>
             </div>

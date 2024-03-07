@@ -35,4 +35,3 @@ if ($action == 'lock') {
 }
 $result = $context->updateLock($result);
 echo json_encode(new SysRequest(1, ($action == 'lock' ? 'Khóa' : 'Mở khóa') . " thành công", null), JSON_UNESCAPED_UNICODE);
-

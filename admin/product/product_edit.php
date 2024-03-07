@@ -197,12 +197,18 @@ $dataProduct = $context->getByPK($ProdId);
                 $('#input-img-select').click()
             })
             $('#input-img-select').change(() => {
-                var lists =new DataTransfer();
+                let lists =new DataTransfer();
                 Array.from(document.getElementById('box-images').files).forEach(item => {
-                    lists.items.add(item)
+                    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+                    // Kiểm tra phần mở rộng của tệp tin
+                    if (allowedExtensions.exec(item.name)) 
+                        lists.items.add(item)
                 });
                 Array.from(document.getElementById('input-img-select').files).forEach(item => {
-                    lists.items.add(item)
+                    const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+                    // Kiểm tra phần mở rộng của tệp tin
+                    if (allowedExtensions.exec(item.name)) 
+                        lists.items.add(item)
                 });
                 document.getElementById('box-images').files = lists.files;
                 Array.from(document.getElementById('input-img-select').files).forEach(
@@ -227,9 +233,8 @@ $dataProduct = $context->getByPK($ProdId);
                                 labelRadioButton.classList = 'label-select-is-main';
                                 const imageDataURL = e.target.result;
                                 const image = new Image();
-                                // Gán dữ liệu hình ảnh cho đối tượng hình ảnh
                                 image.src = imageDataURL;
-                                image.style = 'margin: 1px; width: 100%;';
+                                image.style = 'width: 50%; min-width: 300px; min-height: 300px; margin: 1px;';
                                 const labelImage =document.createElement('label');
                                 const btnClose =document.createElement('button');
                                 btnClose.type = "button";
@@ -238,6 +243,10 @@ $dataProduct = $context->getByPK($ProdId);
                                 btnClose.innerHTML = '<i class="fa-solid fa-xmark text-white"></i>'
                                 btnClose.onclick = () => {
                                     boxImage.remove();
+                                    let lists = new DataTransfer();
+                                    Array.from(document.getElementById('box-images').files).forEach(item => {
+                                        lists.items.add(item)
+                                    });
                                     for (let i = 0; i < lists.files.length; i++) {
                                         if (lists.files[i].name === file.name) 
                                         {
@@ -264,14 +273,13 @@ $dataProduct = $context->getByPK($ProdId);
                                         labelRadioButton.classList += ' d-none';
                                 }
                                 labelImage.classList = 'position-relative';
-                                labelImage.style = 'border: 1px solid rgba(0,0,0,0.2); width: 50%; min-width: 300px; min-height: 300px;';
+                                labelImage.style = 'border: 1px solid rgba(0,0,0,0.2);';
                                 labelImage.setAttribute('for', file.name.trim());
                                 labelImage.appendChild(image);
                                 boxImage.appendChild(btnClose);
                                 boxImage.appendChild(labelImage);
                                 boxImage.appendChild(radioButton);
                                 boxImage.appendChild(labelRadioButton);
-                                // Thêm đối tượng hình ảnh vào trang web (hoặc thực hiện các thao tác khác)
                                 document.getElementById('list-images').appendChild(boxImage);
                             };
 

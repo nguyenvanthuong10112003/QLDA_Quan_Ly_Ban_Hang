@@ -38,7 +38,7 @@
                     $member
                 )
             );
-            header("Location: user_add.php");
+            header("Location: personnel_add.php");
             exit(0);
         }  
         $member->password_hash = md5($member->password_hash);
@@ -54,7 +54,7 @@
                     $member
                 )
             );
-            header("Location: user_add.php");
+            header("Location: personnel_add.php");
             exit(0);
         }
         $context = new MemberRepository();
@@ -67,7 +67,7 @@
                     $member
                 )
             );
-            header("Location: user_add.php");
+            header("Location: personnel_add.php");
         } else {
             if ($context->create($member)){
                 $_SESSION[KeySession::sysrequest->value] = json_encode(
@@ -77,7 +77,7 @@
                         null
                     )
                 );
-                header('Location: user_list.php');
+                header('Location: personnel_list.php');
             } else {
                 $_SESSION[KeySession::sysrequest->value] = json_encode(
                     new SysRequest(
@@ -86,7 +86,7 @@
                         $member
                     )
                 );
-                header('Location: user_add.php');
+                header('Location: personnel_add.php');
             }
         }
         $context->__destruct();

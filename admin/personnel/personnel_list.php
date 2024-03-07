@@ -9,12 +9,10 @@ $_SESSION[KeySession::permission->value] == 'admin'))
     header("Location: ../home/index.php");
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     $context = new MemberRepository();
-        // Xử lý Ajax request
     $search = isset($_GET["input_value"]) ? $_GET["input_value"] : '';
     include("../pagination/offset.php");
     $datas = $context->getAllPersonnel($search, $item_per_page, $offset);
     $totalRecords = $context->getCountPersonnel($search);
-    // Tổng số trang = tổng số sản phẩm / tổng số sản phẩm một trang
     $totalPage = ceil($totalRecords / $item_per_page);
 ?>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -41,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
             <div class="card">
                 <div class="card-header">
                     <h4>Danh sách nhân viên</h4>
-                    <a href="user_add.php" class="btn btn-primary float-start"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Thêm</a>
+                    <a href="personnel_add.php" class="btn btn-primary float-start"><i class="fa-solid fa-plus" style="margin-right: 5px;"></i>Thêm</a>
                 </div>
                 <div class="card-body highlight" style="overflow: auto;">
                     <table class="table table-bordered">
